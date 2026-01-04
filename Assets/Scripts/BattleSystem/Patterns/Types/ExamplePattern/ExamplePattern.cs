@@ -40,7 +40,7 @@ public class ExamplePattern : PatternHolder
     {
         if(projectilesSpawned < bulletLocations.Length)
         {
-            Instantiate(baseAttackProjectile, bulletLocations[projectilesSpawned]);
+            Projectile projectile = Instantiate(baseAttackProjectile, bulletLocations[projectilesSpawned]);
             projectilesSpawned++;
         }
         else

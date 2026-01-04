@@ -20,6 +20,7 @@ public class PatternHandler : MonoBehaviour
     }
 
     private GameObject patternArea;
+    public Transform cursorPosition; 
 
     public event Action patternStarted;
     public event Action patternStopped;

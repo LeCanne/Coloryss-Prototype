@@ -27,7 +27,7 @@ public class BattleHandler : MonoBehaviour
     public event Action battleFinished;
     public event Action enemySelection;
     public event Action commandSelection;
-    public event Action playerskillissued;
+    public event Action playerDied;
     public Entity currentPlayer;
     public List<Enemy> currentEnemies = new List<Enemy>();
     public List<Enemy> deadEnemies = new List<Enemy>();
@@ -56,7 +56,7 @@ public class BattleHandler : MonoBehaviour
     {
         if(currentPlayer.hp <= 0)
         {
-            playerskillissued?.Invoke();
+            playerDied?.Invoke();
         }
         else
         {

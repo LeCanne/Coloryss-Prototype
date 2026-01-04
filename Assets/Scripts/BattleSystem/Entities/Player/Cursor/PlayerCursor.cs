@@ -14,7 +14,7 @@ public class PlayerCursor : MonoBehaviour
     bool canParry = true;
     void Awake()
     {
-       
+        PatternHandler.Instance.cursorPosition = transform;
         playerEntity = BattleHandler.Instance.currentPlayer;
         parry = InputSystem.actions.FindAction("Parry");
         parry.Enable();
@@ -43,7 +43,7 @@ public class PlayerCursor : MonoBehaviour
             for(int i = 0; i < parryables.Count; i++)
             {
                 Debug.Log("Parried : " + parryables[i].name);
-                parryables[i].Parry();
+                parryables[i].HandleParry();
               
             }
         }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6831563445587036502}
   - component: {fileID: 7808976758787342373}
   - component: {fileID: 6097686655103194926}
+  - component: {fileID: 1575804409521542194}
   m_Layer: 6
   m_Name: TestProjectiles
   m_TagString: Untagged
@@ -127,8 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3593bd23635f1b443a70d17eeed8e987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  data: {fileID: 11400000, guid: fd8438b32d7f1f745a979064ab1f9c16, type: 2}
+  P_data: {fileID: 11400000, guid: fd8438b32d7f1f745a979064ab1f9c16, type: 2}
+  P_Behaviors:
+  - {fileID: 11400000, guid: 3192af6533acd524fb8865e29a8a31d7, type: 2}
+  rb2d: {fileID: 0}
   damage: 0
+  speed: 0
   parried: 0
 --- !u!61 &6097686655103194926
 BoxCollider2D:
@@ -160,7 +165,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -176,3 +181,30 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.811189, y: 1.1396763}
   m_EdgeRadius: 0
+--- !u!50 &1575804409521542194
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328885835757347842}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4

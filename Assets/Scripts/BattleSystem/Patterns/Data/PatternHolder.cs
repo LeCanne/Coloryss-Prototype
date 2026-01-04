@@ -6,7 +6,7 @@ public class PatternHolder : MonoBehaviour
 
     [Header ("References")]
     public Enemy patternLauncher;
-    public PlayerCursor PlayerCursor;
+    public PlayerCursor playerCursor;
 
     [Header ("Base Info")]
     public bool patternOver = false;
@@ -23,6 +23,7 @@ public class PatternHolder : MonoBehaviour
 
     private void Start()
     {
+         
          StartPattern();
     }
     public virtual void StartPattern()
