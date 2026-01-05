@@ -5,6 +5,7 @@ public class ExamplePattern : PatternHolder
 {
     [Header ("Pattern Info")]
     public Projectile baseAttackProjectile;
+    public ProjectileBehavior followBehavior;
     public Transform[] bulletLocations;
     int projectilesSpawned;
 
@@ -41,6 +42,8 @@ public class ExamplePattern : PatternHolder
         if(projectilesSpawned < bulletLocations.Length)
         {
             Projectile projectile = Instantiate(baseAttackProjectile, bulletLocations[projectilesSpawned]);
+            projectile.AddBehavior(followBehavior);
+            projectile.speed = 12f;
             projectilesSpawned++;
         }
         else

@@ -24,7 +24,9 @@ public class RainEntity : Entity
     public override void HasDied()
     {
         base.HasDied();
+        Debug.Log("Annihilated. . .");
         BattleHandler.Instance.EndBattle();
+        PatternHandler.Instance.InterruptPattern();
     }
     
 }

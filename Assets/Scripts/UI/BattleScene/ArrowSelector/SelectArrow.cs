@@ -22,6 +22,9 @@ public class SelectArrow : MonoBehaviour
 
         TurnHandler.Instance.enemyTurnBegin += HideArrow;
         TurnHandler.Instance.playerTurnBegin += ShowArrow;
+
+        BattleHandler.Instance.battleFinished += HideArrow;
+        BattleHandler.Instance.playerDied += HideArrow;
     }
 
     void OnNavigate(InputAction.CallbackContext context)

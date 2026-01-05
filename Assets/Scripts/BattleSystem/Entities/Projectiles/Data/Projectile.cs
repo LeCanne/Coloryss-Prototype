@@ -27,7 +27,7 @@ public class Projectile : MonoBehaviour
         InitializeData(P_data);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         UseAllBehaviors();
     }
@@ -40,16 +40,20 @@ public class Projectile : MonoBehaviour
             for(int i = 0; i < P_Behaviors.Count; i++)
             {
                 P_Behaviors[i].DoBehavior(this);
+                if (P_Behaviors[i].doOnce)
+                {
+                    RemoveBehavior(P_Behaviors[i]);
+                }
             }
         }
     }
 
-    void AddBehavior(ProjectileBehavior pBehavior)
+    public void AddBehavior(ProjectileBehavior pBehavior)
     {
         P_Behaviors.Add(pBehavior);
     }
 
-    void RemoveBehavior(ProjectileBehavior pbehavior)
+    public void RemoveBehavior(ProjectileBehavior pbehavior)
     {
         P_Behaviors.Remove(pbehavior);
     }

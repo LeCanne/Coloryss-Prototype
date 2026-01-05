@@ -109,13 +109,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExamplePattern
   patternLauncher: {fileID: 0}
-  PlayerCursor: {fileID: 1399621651993059804}
+  playerCursor: {fileID: 0}
   patternOver: 1
   baseSpeed: 0
   baseDamage: 0
   speedMultiplier: 0
   damageMultiplier: 0
   baseAttackProjectile: {fileID: 7808976758787342373, guid: 05115fea610d4154a8c16b85ed1461e8, type: 3}
+  followBehavior: {fileID: 11400000, guid: 3192af6533acd524fb8865e29a8a31d7, type: 2}
   bulletLocations:
   - {fileID: 181531602918517156}
   - {fileID: 6064632481185390132}
@@ -244,17 +245,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9974dbcbbdc9d2045964650b812d0f87, type: 3}
---- !u!114 &1399621651993059804 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1665375399732597092, guid: 9974dbcbbdc9d2045964650b812d0f87, type: 3}
-  m_PrefabInstance: {fileID: 320017670235861176}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91e98de68ed5bf04180e2d259cd39016, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerCursor
 --- !u!4 &6977870757582725807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7252640500670026263, guid: 9974dbcbbdc9d2045964650b812d0f87, type: 3}

@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ff07ac8a7942d48a68be566312b331, type: 3}
   m_Name: P_DATA_FollowTarget
   m_EditorClassIdentifier: Assembly-CSharp::FollowPlayer
+  doOnce: 1

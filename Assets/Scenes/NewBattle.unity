@@ -208,7 +208,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1387308158605851739, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
       propertyPath: battleData.enemyList.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1387308158605851739, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
       propertyPath: 'battleData.enemyList.Array.data[1]'
@@ -631,6 +631,7 @@ MonoBehaviour:
   maxHp: 40
   hp: 40
   unitName: Fuck
+  dead: 0
 --- !u!4 &1734267763
 Transform:
   m_ObjectHideFlags: 0

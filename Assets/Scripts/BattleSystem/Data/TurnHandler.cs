@@ -47,6 +47,8 @@ public class TurnHandler : MonoBehaviour
         }
 
         BattleHandler.Instance.battleStarted += InitializeBattleTurns;
+        BattleHandler.Instance.battleFinished += ResetTurnHandler;
+        BattleHandler.Instance.playerDied += ResetTurnHandler;
         
 
     }
@@ -126,12 +128,12 @@ public class TurnHandler : MonoBehaviour
 
     public void EndTurn()
     {
-        if(BattleHandler.Instance.currentEnemies.Count <= 0)
+        if(BattleHandler.Instance.currentEnemies.Count <= 0 && BattleHandler.Instance.currentPlayer.dead != true)
         {
             Debug.Log("Player Won");
             BattleHandler.Instance.EndBattle();
         }
-        else
+        else if(BattleHandler.Instance.currentPlayer.dead != true)
         {
             playerTurn = !playerTurn;
             BattleHandler.Instance.DisableEnemySelection();

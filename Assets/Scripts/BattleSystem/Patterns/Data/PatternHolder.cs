@@ -23,7 +23,6 @@ public class PatternHolder : MonoBehaviour
 
     private void Start()
     {
-         
          StartPattern();
     }
     public virtual void StartPattern()

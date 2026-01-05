@@ -11,7 +11,7 @@ public class Entity : MonoBehaviour, IDamageable
     public string unitName;
     public event Action Died;
     public event Action damaged;
-
+    public bool dead;
     
 
     public void InitializeUnit(EntityData myEntityData)
@@ -41,15 +41,17 @@ public class Entity : MonoBehaviour, IDamageable
             hp = 0; 
         }
 
-            damaged?.Invoke();
+        damaged?.Invoke();
         CheckDead();
     }
 
     public void CheckDead()
     {
-        if(hp <= 0)
+        if(dead == false && hp <= 0)
         {
+            dead = true;
             HasDied();
+            
         }
     }
 

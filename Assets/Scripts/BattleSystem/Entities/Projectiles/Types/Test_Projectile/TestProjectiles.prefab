@@ -129,8 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   P_data: {fileID: 11400000, guid: fd8438b32d7f1f745a979064ab1f9c16, type: 2}
-  P_Behaviors:
-  - {fileID: 11400000, guid: 3192af6533acd524fb8865e29a8a31d7, type: 2}
+  P_Behaviors: []
   rb2d: {fileID: 0}
   damage: 0
   speed: 0

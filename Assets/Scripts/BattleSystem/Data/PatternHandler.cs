@@ -19,6 +19,7 @@ public class PatternHandler : MonoBehaviour
         }
     }
 
+    private PatternHolder currentPattern;
     private GameObject patternArea;
     public Transform cursorPosition; 
 
@@ -49,6 +50,7 @@ public class PatternHandler : MonoBehaviour
 
     public void StartPattern(PatternData patternData, Enemy enemy)
     {
+        
         patternStarted?.Invoke();
         SpawnPattern(patternData, enemy);
     }
@@ -58,6 +60,7 @@ public class PatternHandler : MonoBehaviour
 
         patternStopped?.Invoke();
         Destroy(pattern.gameObject);
+        currentPattern = null;
         
     }
 
@@ -70,6 +73,16 @@ public class PatternHandler : MonoBehaviour
         newPatternHolder.GetComponent<PatternHolder>().transform.position = gameObject.transform.position;
         newPatternHolder.GetComponent<PatternHolder>().patternFinished += EndPattern;
 
+        currentPattern = newPatternHolder.GetComponent<PatternHolder>();
 
+    }
+
+    public void InterruptPattern()
+    {
+        if (currentPattern != null)
+        {
+            currentPattern.patternFinished -= EndPattern;
+            EndPattern(currentPattern);
+        }
     }
 }

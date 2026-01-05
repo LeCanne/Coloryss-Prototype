@@ -21,7 +21,12 @@ public class PlayerCursor : MonoBehaviour
         parry.started += ParryInput;
     }
 
-    
+    private void OnDestroy()
+    {
+        parry.started -= ParryInput;
+    }
+
+
 
     void ParryInput(InputAction.CallbackContext context)
     {
@@ -40,7 +45,7 @@ public class PlayerCursor : MonoBehaviour
        
         if (parryables.Count > 0)
         {
-            for(int i = 0; i < parryables.Count; i++)
+            for(int i = parryables.Count-1; i >= 0; i--)
             {
                 Debug.Log("Parried : " + parryables[i].name);
                 parryables[i].HandleParry();
