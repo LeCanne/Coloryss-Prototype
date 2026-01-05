@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Net;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class ExamplePattern : PatternHolder
     [Header ("Pattern Info")]
     public Projectile baseAttackProjectile;
     public ProjectileBehavior followBehavior;
+    public ProjectileBehavior rotateToPlayer;
     public Transform[] bulletLocations;
     int projectilesSpawned;
 
@@ -43,6 +45,7 @@ public class ExamplePattern : PatternHolder
         {
             Projectile projectile = Instantiate(baseAttackProjectile, bulletLocations[projectilesSpawned]);
             projectile.AddBehavior(followBehavior);
+            projectile.AddBehavior(rotateToPlayer);
             projectile.speed = 12f;
             projectilesSpawned++;
         }
@@ -60,7 +63,7 @@ public class ExamplePattern : PatternHolder
         if (loops < currentloops)
         {
             patternOver = true;
-            EndPattern();
+            EndPattern(1f);
            
         }
         else
@@ -68,6 +71,8 @@ public class ExamplePattern : PatternHolder
             projectilesSpawned = 0;
         }
     }
+
+    
 
     
 

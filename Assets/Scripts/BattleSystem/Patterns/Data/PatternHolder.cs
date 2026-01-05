@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PatternHolder : MonoBehaviour
@@ -30,8 +31,21 @@ public class PatternHolder : MonoBehaviour
 
     }
 
-    public void EndPattern()
+    public virtual void EndPattern()
     {
-        patternFinished.Invoke(this);
+        patternFinished.Invoke(this);    
+    }
+
+    public virtual void EndPattern(float delayEnd) 
+    {
+        StartCoroutine(EndDelayed(delayEnd));
+    }
+
+
+
+    IEnumerator EndDelayed(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        EndPattern();
     }
 }
