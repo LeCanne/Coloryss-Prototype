@@ -6,7 +6,7 @@ using static UnityEngine.InputSystem.OnScreen.OnScreenStick;
 public class Projectile : MonoBehaviour
 {
     public ProjectileData P_data;
-    public List<ProjectileBehavior> P_Behaviors;
+    public List<BehaviorDataContainer> P_Behaviors;
 
     [Header("References")]
     public Rigidbody2D rb2d;
@@ -20,6 +20,11 @@ public class Projectile : MonoBehaviour
     float speedmultiplier;
     [Header("States")]
     public bool parried;
+    public float currentBehaviorTime;
+    public int currentBehaviorData;
+    public int currentLoop;
+    
+    
 
     private void Awake()
     {
@@ -28,8 +33,8 @@ public class Projectile : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
-        UseAllBehaviors();
+    {       
+       UseAllBehaviors();   
     }
 
     #region Behaviors
@@ -37,23 +42,48 @@ public class Projectile : MonoBehaviour
     {
         if (P_Behaviors.Count > 0)
         {
-            for(int i = 0; i < P_Behaviors.Count; i++)
+            //Resets the behavior indexer and adds 1 to the behavior LoopCount
+            if (currentBehaviorData > P_Behaviors.Count-1)
             {
-                P_Behaviors[i].DoBehavior(this);
-                if (P_Behaviors[i].doOnce)
-                {
-                    RemoveBehavior(P_Behaviors[i]);
-                }
+                currentBehaviorData = 0;
+                currentLoop++;
+            }
+
+            currentBehaviorTime += Time.deltaTime;
+            BehaviorDataContainer containers = P_Behaviors[currentBehaviorData];
+
+            //Verify if the currentbehaviorTime has incremented above the requiredTime
+            if(containers.timeToComplete < currentBehaviorTime)
+            {
+                DoNextBehavior(containers);
+            }
+
+            //As long as time goes, continue doing Behaviors
+            for (int i = 0; i < containers.behaviors.Count; i++)
+            {
+                containers.behaviors[i].DoBehavior(this);
             }
         }
     }
 
-    public void AddBehavior(ProjectileBehavior pBehavior)
+    void DoNextBehavior(BehaviorDataContainer container)
+    {
+        
+        //RemoveBehavior after a number of loops
+        if(container.loops != 0 && container.loops == currentLoop)
+        {
+            RemoveBehavior(container);
+        }
+        currentBehaviorTime = 0;
+        currentBehaviorData++;
+    }
+
+    public void AddBehavior(BehaviorDataContainer pBehavior)
     {
         P_Behaviors.Add(pBehavior);
     }
 
-    public void RemoveBehavior(ProjectileBehavior pbehavior)
+    public void RemoveBehavior(BehaviorDataContainer pbehavior)
     {
         P_Behaviors.Remove(pbehavior);
     }

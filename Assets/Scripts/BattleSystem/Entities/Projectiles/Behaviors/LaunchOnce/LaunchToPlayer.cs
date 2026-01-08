@@ -8,9 +8,9 @@ public class LaunchToPlayer : ProjectileBehavior
   
     public override void DoBehavior(Projectile projectile)
     {       
-            Transform target = PatternHandler.Instance.cursorPosition;
-            Vector3 direction = target.transform.position - projectile.transform.position;
-            projectile.rb2d.linearVelocity = direction.normalized * projectile.speed;         
+          Transform target = PatternHandler.Instance.cursorPosition;
+          Vector3 direction = target.transform.position - projectile.transform.position;
+          projectile.rb2d.linearVelocity = direction.normalized * projectile.speed;         
     }
 
     

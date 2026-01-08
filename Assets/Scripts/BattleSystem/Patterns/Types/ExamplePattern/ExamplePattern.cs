@@ -6,8 +6,8 @@ public class ExamplePattern : PatternHolder
 {
     [Header ("Pattern Info")]
     public Projectile baseAttackProjectile;
-    public ProjectileBehavior followBehavior;
-    public ProjectileBehavior rotateToPlayer;
+    public BehaviorDataContainer followBehavior;
+    public BehaviorDataContainer rotateToPlayer;
     public Transform[] bulletLocations;
     int projectilesSpawned;
 
