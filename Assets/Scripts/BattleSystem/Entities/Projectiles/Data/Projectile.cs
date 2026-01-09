@@ -23,8 +23,9 @@ public class Projectile : MonoBehaviour
     public float currentBehaviorTime;
     public int currentBehaviorData;
     public int currentLoop;
-    
-    
+    private Dictionary<ProjectileBehavior, object> runtimeData
+     = new Dictionary<ProjectileBehavior, object>();
+
 
     private void Awake()
     {
@@ -38,6 +39,29 @@ public class Projectile : MonoBehaviour
     }
 
     #region Behaviors
+
+   
+    //Handles getting the data of a given behavior and it's current values
+    //System works by modifying a data class that handles all runtime values that the SO provides.
+    public T GetBehaviorData<T>(ProjectileBehavior behavior)
+        where T : new()
+    {
+        if (!runtimeData.TryGetValue(behavior, out var data))
+        {
+            data = new T();
+            runtimeData.Add(behavior, data);
+        }
+
+        return (T)data;
+    }
+
+    public void SetBehaviorData<T>(
+    ProjectileBehavior behavior,
+    T data)
+    {
+        runtimeData[behavior] = data;
+    }
+
     void UseAllBehaviors()
     {
         if (P_Behaviors.Count > 0)
