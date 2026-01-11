@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 [RequireComponent (typeof(Image))]
 [RequireComponent(typeof(RectTransform))]
-public class Enemy : Entity
+public class Enemy : Entity, ISelectHandler
 {
 
 
@@ -56,9 +56,15 @@ public class Enemy : Entity
         selectable.enabled = true;
     }
 
-    public void AddFunction(UnityAction action)
+    public void AddSelectFunction(UnityAction action)
     {
        selectable.onClick.AddListener(action);
+       
+    }
+
+    void DisplayName()
+    {
+        BattleHandler.Instance.SendBattleMessage(unitName);
     }
 
     public void RemoveActions()
@@ -121,5 +127,8 @@ public class Enemy : Entity
          DisposeEnemy();
     }
 
-    
+    public void OnSelect(BaseEventData eventData)
+    {
+        DisplayName();
+    }
 }

@@ -52,5 +52,7 @@ public class CommandAttack : Command
         TurnHandler.Instance.EndTurn();
     }
 
+    
+
    
 }

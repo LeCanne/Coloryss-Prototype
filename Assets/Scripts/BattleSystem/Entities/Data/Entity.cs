@@ -12,6 +12,7 @@ public class Entity : MonoBehaviour, IDamageable
     public event Action Died;
     public event Action damaged;
     public bool dead;
+    public bool blocking;
     
 
     public void InitializeUnit(EntityData myEntityData)
@@ -28,8 +29,9 @@ public class Entity : MonoBehaviour, IDamageable
     }
 
 
-    public void RecieveDamage(int damage)
+    public virtual void RecieveDamage(int damage)
     {
+        
         hp -= damage;
 
         if(hp > maxHp)

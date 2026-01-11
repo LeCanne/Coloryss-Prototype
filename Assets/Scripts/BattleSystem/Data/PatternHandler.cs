@@ -19,7 +19,7 @@ public class PatternHandler : MonoBehaviour
         }
     }
 
-    private PatternHolder currentPattern;
+    public PatternHolder currentPattern;
     private GameObject patternArea;
     public Transform cursorPosition; 
 
@@ -60,7 +60,7 @@ public class PatternHandler : MonoBehaviour
 
         patternStopped?.Invoke();
         Destroy(pattern.gameObject);
-        currentPattern = null;
+        
         
     }
 

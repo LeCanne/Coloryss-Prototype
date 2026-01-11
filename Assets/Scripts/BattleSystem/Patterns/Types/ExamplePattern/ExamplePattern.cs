@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Net;
+using TMPro;
 using UnityEngine;
 
 public class ExamplePattern : PatternHolder
 {
     [Header ("Pattern Info")]
     public Projectile baseAttackProjectile;
-    public BehaviorDataContainer directProjectile;
-    public BehaviorDataContainer rotateToPlayer;
+    public BehaviorDataContainer bulletBehavior;
     public Transform[] bulletLocations;
     int projectilesSpawned;
 
@@ -46,20 +46,19 @@ public class ExamplePattern : PatternHolder
             Projectile projectile = Instantiate(baseAttackProjectile, bulletLocations[projectilesSpawned]);
 
             //AddDirectBehavior to direct projectile towards player.
-            projectile.AddBehavior(directProjectile);
+            projectile.AddBehavior(bulletBehavior);
             DirectBehaviorData direct = new DirectBehaviorData
             {
                 direction = PatternHandler.Instance.cursorPosition.position - projectile.transform.position
             };
-            projectile.SetBehaviorData(directProjectile.behaviors[0], direct);
+            projectile.SetBehaviorData(bulletBehavior.behaviors[0], direct);
 
             //AddRotateBehavior towards player
-            projectile.AddBehavior(rotateToPlayer);
             RotateTowardsBehaviorData rotation = new RotateTowardsBehaviorData
             {
                 directionToRotate = PatternHandler.Instance.cursorPosition.position - projectile.transform.position
             };
-            projectile.SetBehaviorData(rotateToPlayer.behaviors[0], rotation);
+            projectile.SetBehaviorData(bulletBehavior.behaviors[1], rotation);
 
 
             projectile.speed = 12f;

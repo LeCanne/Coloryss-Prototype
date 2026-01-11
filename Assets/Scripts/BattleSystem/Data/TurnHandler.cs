@@ -132,6 +132,7 @@ public class TurnHandler : MonoBehaviour
         {
             Debug.Log("Player Won");
             BattleHandler.Instance.EndBattle();
+            BattleHandler.Instance.SendBattleMessage("V I C T O R Y !");
         }
         else if(BattleHandler.Instance.currentPlayer.dead != true)
         {

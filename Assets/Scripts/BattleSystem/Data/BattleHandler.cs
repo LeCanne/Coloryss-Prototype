@@ -28,6 +28,7 @@ public class BattleHandler : MonoBehaviour
     public event Action enemySelection;
     public event Action commandSelection;
     public event Action playerDied;
+    public event Action<string> sendBattleMessage;
     public Entity currentPlayer;
     public List<Enemy> currentEnemies = new List<Enemy>();
     public List<Enemy> deadEnemies = new List<Enemy>();
@@ -51,6 +52,11 @@ public class BattleHandler : MonoBehaviour
     {
         battleStartInfo?.Invoke(battleData);
         battleStarted?.Invoke();
+    }
+
+    public void SendBattleMessage(string message)
+    {
+        sendBattleMessage?.Invoke(message);
     }
     public void EndBattle()
     {
@@ -107,9 +113,11 @@ public class BattleHandler : MonoBehaviour
     {
         foreach (Enemy enemy in currentEnemies)
         {
-            enemy.AddFunction(action);
+            enemy.AddSelectFunction(action);
         }
     }
+
+    
 
     public void RemoveInteractions()
     {

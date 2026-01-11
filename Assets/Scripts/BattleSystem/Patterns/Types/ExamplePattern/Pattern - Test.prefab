@@ -116,13 +116,9 @@ MonoBehaviour:
   speedMultiplier: 0
   damageMultiplier: 0
   baseAttackProjectile: {fileID: 7808976758787342373, guid: 05115fea610d4154a8c16b85ed1461e8, type: 3}
-  directProjectile:
+  bulletBehavior:
     behaviors:
     - {fileID: 11400000, guid: 3192af6533acd524fb8865e29a8a31d7, type: 2}
-    timeToComplete: 0
-    loops: 0
-  rotateToPlayer:
-    behaviors:
     - {fileID: 11400000, guid: 1c9812170336eff4da74f46cb5e9a355, type: 2}
     timeToComplete: 0
     loops: 0
