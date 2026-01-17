@@ -10,6 +10,7 @@ public class PlayerCursor : MonoBehaviour
 
     [Header ("Data")]
     public Entity playerEntity;
+    public Animator myAnimator;
     List<Projectile> parryables = new List<Projectile>();
     float staggerTime = 0.5f;
     InputAction parry;
@@ -55,6 +56,7 @@ public class PlayerCursor : MonoBehaviour
             for(int i = parryables.Count-1; i >= 0; i--)
             {
                 Debug.Log("Parried : " + parryables[i].name);
+                myAnimator.SetTrigger("Parry");
                 parryables[i].HandleParry();
                 AudioHandler.Instance.SpawnClip(parrySound, 0.5f, transform.position);
               
