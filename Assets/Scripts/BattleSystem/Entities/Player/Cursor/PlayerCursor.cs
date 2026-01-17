@@ -7,11 +7,18 @@ using UnityEngine.InputSystem;
 
 public class PlayerCursor : MonoBehaviour
 {
+
+    [Header ("Data")]
     public Entity playerEntity;
     List<Projectile> parryables = new List<Projectile>();
     float staggerTime = 0.5f;
     InputAction parry;
+
+    [Header ("Sounds")]
+    public AudioClip parrySound;
+    public AudioClip failedParrySound;
     bool canParry = true;
+
     void Awake()
     {
         PatternHandler.Instance.cursorPosition = transform;
@@ -49,6 +56,7 @@ public class PlayerCursor : MonoBehaviour
             {
                 Debug.Log("Parried : " + parryables[i].name);
                 parryables[i].HandleParry();
+                AudioHandler.Instance.SpawnClip(parrySound, 0.5f, transform.position);
               
             }
         }
@@ -87,6 +95,7 @@ public class PlayerCursor : MonoBehaviour
 
     IEnumerator Cooldown()
     {
+        AudioHandler.Instance.SpawnClip(failedParrySound, 0.9f, transform.position);
         Debug.Log("Staggered!");
         canParry = false;
         yield return new WaitForSeconds(staggerTime);
