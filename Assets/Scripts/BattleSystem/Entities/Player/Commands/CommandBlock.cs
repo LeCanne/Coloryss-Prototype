@@ -7,7 +7,7 @@ public class CommandBlock : Command
     public override void Awake()
     {
         base.Awake();
-        TurnHandler.Instance.SetFirstCommand(this);
+       
         
     }
     public override void DoCommand()

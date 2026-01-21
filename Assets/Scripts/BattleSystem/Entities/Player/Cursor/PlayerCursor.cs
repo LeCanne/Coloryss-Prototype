@@ -1,7 +1,6 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,6 +10,8 @@ public class PlayerCursor : MonoBehaviour
     [Header ("Data")]
     public Entity playerEntity;
     public Animator myAnimator;
+    public GameObject spriteObject;
+   
     List<Projectile> parryables = new List<Projectile>();
     float staggerTime = 0.5f;
     InputAction parry;
@@ -66,6 +67,7 @@ public class PlayerCursor : MonoBehaviour
         {
 
             StartCoroutine(Cooldown());
+            StartCoroutine(Shake(1f,3f,staggerTime * 0.5f));
         }
     }
 
@@ -97,11 +99,37 @@ public class PlayerCursor : MonoBehaviour
 
     IEnumerator Cooldown()
     {
-        AudioHandler.Instance.SpawnClip(failedParrySound, 0.9f, transform.position);
+        AudioHandler.Instance.SpawnClip(failedParrySound, 0.5f, transform.position);
+        myAnimator.SetTrigger("Staggered");
         Debug.Log("Staggered!");
         canParry = false;
+        
         yield return new WaitForSeconds(staggerTime);
+        myAnimator.SetTrigger("UnStagger");
         canParry = true;
+        yield return null;
+    }
+
+    IEnumerator Shake(float shakeDistance, float shakeAmount, float shakeTime)
+    {
+        Vector3 shakeForce = Vector3.zero;
+        float minshake = -shakeDistance;
+        float maxshake = shakeDistance;
+
+        while (shakeTime > 0)
+        {
+            shakeTime -= Time.deltaTime;
+            
+            float currentShakeX = Random.Range(minshake, maxshake);
+            float currentShakeY = Random.Range(minshake, maxshake);
+
+            spriteObject.transform.localPosition = new Vector3(currentShakeX, currentShakeY);
+            
+           
+            yield return null;
+        }
+        spriteObject.transform.localPosition = Vector3.zero; 
+
         yield return null;
     }
     

@@ -198,33 +198,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &420876401 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5734133193224341864, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
-  m_PrefabInstance: {fileID: 1006720326}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &420876407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420876401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4516beb1c5ca9c43bd11d01d8130274, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CommandBlock
-  commandName: Block
-  onCancel:
-    m_Name: On Cancel
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: f03542f9-8371-4226-965d-4c52321773a5
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
 --- !u!1 &763935607
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,10 +339,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BattleScene
       objectReference: {fileID: 0}
-    - target: {fileID: 6796520760766478756, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
-      propertyPath: onCancel.m_Name
-      value: On Cancel
-      objectReference: {fileID: 0}
     - target: {fileID: 7498322001551264018, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -396,11 +365,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7498322001551264018, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -767.9999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7498322001551264018, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -671.9999
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7498322001551264018, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -450,14 +419,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3594925355484857642, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5734133193224341864, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 420876407}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
 --- !u!224 &1006720327 stripped
 RectTransform:
@@ -512,10 +477,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.23333335
-    y: 0.085185185
-    width: 0.53333336
-    height: 0.8296296
+    x: 0.25649145
+    y: 0.12162162
+    width: 0.4863838
+    height: 0.7567568
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -688,12 +653,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 8
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 320, y: 180}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -711,7 +676,7 @@ Canvas:
   m_RenderMode: 1
   m_Camera: {fileID: 1264347496}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0

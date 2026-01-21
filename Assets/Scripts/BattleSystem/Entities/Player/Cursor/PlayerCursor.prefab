@@ -589,5 +589,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCursor
   playerEntity: {fileID: 0}
   myAnimator: {fileID: 7771934352101774141}
+  spriteObject: {fileID: 5015236616011116867}
   parrySound: {fileID: 8300000, guid: 2c895d17246aec54488f7a48efd94534, type: 3}
-  failedParrySound: {fileID: 8300000, guid: 6497ca6cc3ee75e48bdbf663334017ea, type: 3}
+  failedParrySound: {fileID: 8300000, guid: 2705af4bb40229247b2d6e13c46516c0, type: 3}

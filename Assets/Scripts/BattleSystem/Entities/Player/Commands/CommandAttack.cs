@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class CommandAttack : Command
 {
     public UnityAction dealDamage;
+    [TextArea(1,2)]public string commandDescription;
+    public PlayerBattleUI playerUI;
     public override void Awake()
     {
         base.Awake();
@@ -18,6 +20,7 @@ public class CommandAttack : Command
         base.DoCommand();
         
         TurnHandler.Instance.DisableCommands();
+        playerUI.DisplayInfo(commandDescription);
         SelectFirstEnemy();
     }
 
@@ -28,6 +31,7 @@ public class CommandAttack : Command
         BattleHandler.Instance.EnableEnemySelection();
         BattleHandler.Instance.AddCommandInteraction(dealDamage);
         EventSystem.current.SetSelectedGameObject(firstEnemy.gameObject);
+        
     }
 
     public override void OnCancel()
@@ -38,10 +42,13 @@ public class CommandAttack : Command
         EventSystem.current.SetSelectedGameObject(gameObject);
         TurnHandler.Instance.currentCommand = null;
         TurnHandler.Instance.EnableCommands();
+        playerUI.HideInfo();
     }
 
     void DealDamage()
     {
+        TurnHandler.Instance.currentCommand = null;
+        playerUI.HideInfo();
         GameObject currentEnemy = EventSystem.current.currentSelectedGameObject;
         Enemy targetedEnemy = currentEnemy.GetComponent<Enemy>();
 
