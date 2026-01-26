@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Collections;
 
 [RequireComponent (typeof(Button))]
 public class CommandAttack : Command
@@ -9,6 +10,8 @@ public class CommandAttack : Command
     public UnityAction dealDamage;
     [TextArea(1,2)]public string commandDescription;
     public PlayerBattleUI playerUI;
+    public float latenceAfterDamage;
+    public float latenceAfterResolution;
     public override void Awake()
     {
         base.Awake();
@@ -18,20 +21,18 @@ public class CommandAttack : Command
     public override void DoCommand()
     {
         base.DoCommand();
-        
         TurnHandler.Instance.DisableCommands();
         playerUI.DisplayInfo(commandDescription);
         SelectFirstEnemy();
+        playerUI.HidePlayer();
     }
 
     void SelectFirstEnemy()
     {
-        
         Enemy firstEnemy = BattleHandler.Instance.currentEnemies[0];
         BattleHandler.Instance.EnableEnemySelection();
         BattleHandler.Instance.AddCommandInteraction(dealDamage);
-        EventSystem.current.SetSelectedGameObject(firstEnemy.gameObject);
-        
+        EventSystem.current.SetSelectedGameObject(firstEnemy.gameObject);   
     }
 
     public override void OnCancel()
@@ -43,20 +44,27 @@ public class CommandAttack : Command
         TurnHandler.Instance.currentCommand = null;
         TurnHandler.Instance.EnableCommands();
         playerUI.HideInfo();
+        playerUI.DisplayPlayerInfo();
     }
 
     void DealDamage()
     {
         TurnHandler.Instance.currentCommand = null;
         playerUI.HideInfo();
+        StartCoroutine(DamageProcess());
+    }
+
+    IEnumerator DamageProcess()
+    {
         GameObject currentEnemy = EventSystem.current.currentSelectedGameObject;
         Enemy targetedEnemy = currentEnemy.GetComponent<Enemy>();
-
         int dmgAmount = 5;
-        Debug.Log("Deal " + dmgAmount +" to " +  targetedEnemy.name);
+        Debug.Log("Deal " + dmgAmount + " to " + targetedEnemy.name);
         targetedEnemy.RecieveDamage(dmgAmount);
-
-        TurnHandler.Instance.EndTurn();
+        BattleHandler.Instance.SendBattleMessage("You strike " + targetedEnemy.unitName + " for " +  dmgAmount + " damage.");
+        yield return new WaitForSeconds(latenceAfterResolution);
+        TurnHandler.Instance.ResolveTurn();
+        yield return null;
     }
 
     

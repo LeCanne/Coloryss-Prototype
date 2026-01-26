@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class TargetNameDisplay : MonoBehaviour
+public class BattleInfoDisplay : MonoBehaviour
 {
     public TMP_Text displayText;
     public Animator animator;
@@ -9,6 +9,7 @@ public class TargetNameDisplay : MonoBehaviour
     {
         BattleHandler.Instance.sendBattleMessage += DisplayMessageInstantly;
         BattleHandler.Instance.commandSelection += HideInfoDisplay;
+        PatternHandler.Instance.patternStarted += HideInfoDisplay;
         animator = GetComponent<Animator>();
     }
     void DisplayMessageInstantly(string message)

@@ -7,21 +7,16 @@ public class CommandBlock : Command
     public override void Awake()
     {
         base.Awake();
-       
-        
     }
     public override void DoCommand()
     {
         base.DoCommand();
-
-        Block();
-       
-        
+        Block();  
     }
 
     void Block()
     {
         BattleHandler.Instance.currentPlayer.blocking = true;
-        TurnHandler.Instance.EndTurn();
+        TurnHandler.Instance.ResolveTurn();
     }
 }

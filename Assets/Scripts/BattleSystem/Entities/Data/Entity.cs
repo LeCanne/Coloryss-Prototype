@@ -47,7 +47,7 @@ public class Entity : MonoBehaviour, IDamageable
         CheckDead();
     }
 
-    public void CheckDead()
+    public virtual void CheckDead()
     {
         if(dead == false && hp <= 0)
         {

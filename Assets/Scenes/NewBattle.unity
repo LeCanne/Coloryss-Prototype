@@ -335,9 +335,101 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1387551270}
     m_Modifications:
+    - target: {fileID: 1066420249588582813, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_Name
+      value: COMMAND_Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082840494412578843, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082840494412578843, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082840494412578843, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082840494412578843, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082840494412578843, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082840494412578843, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082840494412578843, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 215.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082840494412578843, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082840494412578843, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082840494412578843, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731251782741352135, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5734133193224341864, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_Name
+      value: COMMAND_Block
+      objectReference: {fileID: 0}
     - target: {fileID: 5785383074527819210, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
       propertyPath: m_Name
       value: BattleScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663861351338554108, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: latenceAfterDamage
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663861351338554108, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: latenceAfterResolution
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884114710089310480, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_text
+      value: Your vital force is slowly draining...
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884114710089310480, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_fontSize
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884114710089310480, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884114710089310480, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_horizontalMapping
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884114710089310480, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: checkPaddingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884114710089310480, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_enableExtraPadding
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884114710089310480, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431531786031213900, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -30.5
       objectReference: {fileID: 0}
     - target: {fileID: 7498322001551264018, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
       propertyPath: m_Pivot.x
@@ -419,6 +511,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9089225719038760643, guid: 7eb7439e07822db4aaa4422885b1e8f2, type: 3}
+      propertyPath: m_Name
+      value: COMMAND_Colors
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -477,10 +573,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.25649145
-    y: 0.12162162
-    width: 0.4863838
-    height: 0.7567568
+    x: 0
+    y: 0
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34

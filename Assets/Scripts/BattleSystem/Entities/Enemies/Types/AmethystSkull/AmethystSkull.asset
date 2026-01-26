@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: AmethystSkull
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   name: Amethyst Skull
-  maxHp: 15
+  maxHp: 5
   sprite: {fileID: 21300000, guid: 7c6bfccce97f7924fb9e01c553512275, type: 3}
-  patterns:
-  - {fileID: 11400000, guid: 11fb8126bc620f64ea2cb3819384cb24, type: 2}
+  attacks:
+  - AttackName: Yellow Glyphs
+    Description: draws yellow circles...
+    pattern: {fileID: 11400000, guid: 9e66ae530867fbd459865153ea74d782, type: 2}

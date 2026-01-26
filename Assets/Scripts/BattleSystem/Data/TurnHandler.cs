@@ -126,6 +126,27 @@ public class TurnHandler : MonoBehaviour
         }
     }
 
+    public void ResolveTurn()
+    {
+        StartCoroutine(ResolveEnemies());
+    }
+
+    IEnumerator ResolveEnemies()
+    {
+        
+        List<Enemy> enemies = new List<Enemy>(BattleHandler.Instance.currentEnemies);
+        foreach (Enemy enemy in enemies)
+        {
+            if (enemy.dead)
+            {
+                enemy.DisposeEnemy();
+                BattleHandler.Instance.SendBattleMessage(enemy.unitName + " was erased !");
+                yield return new WaitForSeconds(2f);
+            }
+        }
+        EndTurn();
+        yield return null;
+    }
     public void EndTurn()
     {
         if(BattleHandler.Instance.currentEnemies.Count <= 0 && BattleHandler.Instance.currentPlayer.dead != true)

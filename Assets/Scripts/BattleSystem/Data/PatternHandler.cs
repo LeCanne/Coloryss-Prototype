@@ -27,7 +27,6 @@ public class PatternHandler : MonoBehaviour
     public event Action patternStopped;
     private void Awake()
     {
-
         if (_instance == null && _instance != this)
         {
             _instance = this;
@@ -57,11 +56,8 @@ public class PatternHandler : MonoBehaviour
 
     public void EndPattern(PatternHolder pattern)
     {
-
         patternStopped?.Invoke();
         Destroy(pattern.gameObject);
-        
-        
     }
 
     void SpawnPattern(PatternData pattern, Enemy enemy)
