@@ -18,6 +18,8 @@ public class AudioHandler : MonoBehaviour
         }
     }
 
+    AudioSource currentMusicPlayer;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -40,6 +42,22 @@ public class AudioHandler : MonoBehaviour
         newAudio.clip = audio;
 
         StartCoroutine(AudioSourceManagement(newAudio));
+    }
+
+    public void PlayMusic(AudioClip music, float volume, bool loop)
+    {
+        if (currentMusicPlayer != null)
+        {
+            currentMusicPlayer.Stop();
+        }
+        GameObject go = new GameObject("Music : " + music.name);
+        AudioSource newAudio = go.AddComponent<AudioSource>();
+        newAudio.volume = volume;
+        newAudio.clip = music;
+        newAudio.loop = loop;
+
+        currentMusicPlayer = newAudio;
+        currentMusicPlayer.Play();
     }
 
     IEnumerator AudioSourceManagement(AudioSource audioObjectManagement)

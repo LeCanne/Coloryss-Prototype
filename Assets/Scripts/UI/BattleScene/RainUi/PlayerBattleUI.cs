@@ -15,6 +15,7 @@ public class PlayerBattleUI : MonoBehaviour
     {
         BattleHandler.Instance.battleStarted += UIInitialize;
         TurnHandler.Instance.enemyTurnBegin += DisplayPlayerInfo;
+        TurnHandler.Instance.commandExecuted += HideAllInfo;
     }
 
     private void UIInitialize()
@@ -34,24 +35,24 @@ public class PlayerBattleUI : MonoBehaviour
     #region AnimControls
     void HidePlayerInfo()
     {
-        playerInfo.SetTrigger("HidePlayer");
+        playerInfo.SetBool("ShowPlayerInfo", false);
     }
 
     void ShowPlayerInfo()
     {
-        playerInfo.SetTrigger("ShowPlayer");
+        playerInfo.SetBool("ShowPlayerInfo", true);
     }
 
 
     void HideCommandInfo()
     {
-        commandInfo.SetTrigger("HideCommand");
+        commandInfo.SetBool("ShowCommandInfo", false);
     }
 
     void ShowCommandInfo(string commandInfoText)
     {
         txtCommandInfo.text = commandInfoText;
-        commandInfo.SetTrigger("ShowCommand");
+        commandInfo.SetBool("ShowCommandInfo", true);
 
     }
     #endregion AnimControls

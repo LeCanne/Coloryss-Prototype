@@ -22,6 +22,7 @@ public class SelectArrow : MonoBehaviour
 
         TurnHandler.Instance.enemyTurnBegin += HideArrow;
         TurnHandler.Instance.playerTurnBegin += ShowArrow;
+        TurnHandler.Instance.commandExecuted += HideArrow;  
 
         BattleHandler.Instance.battleFinished += HideArrow;
         BattleHandler.Instance.playerDied += HideArrow;
@@ -43,7 +44,7 @@ public class SelectArrow : MonoBehaviour
         updateArrowPos = true;
     }
 
-    void HideArrow()
+    public void HideArrow()
     {
         sprite.enabled = false;
     }
@@ -55,13 +56,13 @@ public class SelectArrow : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (updateArrowPos == true && EventSystem.current.currentSelectedGameObject != null)
+        if (EventSystem.current.currentSelectedGameObject != null)
         {
             RectTransform go = EventSystem.current.currentSelectedGameObject.GetComponent<RectTransform>();
             RectTransform myRect = GetComponent<RectTransform>();
 
 
-            Debug.Log(go.name);
+            //Debug.Log(go.name);
 
             Vector3 arrowFinalpos = new Vector3(go.transform.position.x - 1, go.transform.position.y, 0);
             myRect.transform.position = arrowFinalpos;

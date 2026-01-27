@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using UnityEditor.U2D.Sprites;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -17,6 +16,8 @@ public class Enemy : Entity, ISelectHandler
     public AttackData[] AttackData;
     private Button selectable;
     public event Action<Enemy> patternDone;
+    public AudioClip snd_AggroAudio;
+    public AudioClip snd_Dead;
    
 
 
@@ -42,8 +43,11 @@ public class Enemy : Entity, ISelectHandler
 
     public void DisposeEnemy()
     {
-        enemySprite.enabled = false;
+        
         BattleHandler.Instance.KillEnemy(this);
+        AudioHandler.Instance.SpawnClip(snd_Dead, 0.4f, transform.position);
+        StartCoroutine(Blink(1.2f, 0.1f));
+        StartCoroutine(Death(1.2f));
         RemoveActions();
         DisableSelection();
     }
@@ -109,6 +113,7 @@ public class Enemy : Entity, ISelectHandler
 
     public virtual void LaunchAttack()
     {
+        AudioHandler.Instance.SpawnClip(snd_AggroAudio, 1.5f, transform.position);
         StartCoroutine(Blink(1.5f, 0.25f));
         StartCoroutine(ProcessAttack(AttackData[0]));
     }
@@ -124,14 +129,7 @@ public class Enemy : Entity, ISelectHandler
     public override void RecieveDamage(int damage)
     {
         base.RecieveDamage(damage);
-
-        if(hp > 0)
-        {
-           StartCoroutine(Blink(0.5f, 0.1f));
-        }
-       
-       
-       
+        StartCoroutine(Blink(0.5f, 0.1f));
     }
 
     public override void HasDied()
@@ -174,6 +172,18 @@ public class Enemy : Entity, ISelectHandler
 
         enemySprite.enabled = true;
         yield return null;
+    }
+
+    IEnumerator Death(float deathTime)
+    {
+        float timeElapsed = 0;
+        while(timeElapsed < deathTime)
+        {
+            timeElapsed += Time.deltaTime;
+            enemySprite.fillAmount = Mathf.Lerp(1, 0, timeElapsed / deathTime);
+            yield return null;
+        }
+        enemySprite.enabled = false;
     }
 }
 

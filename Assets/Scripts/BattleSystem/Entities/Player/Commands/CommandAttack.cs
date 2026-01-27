@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 [RequireComponent (typeof(Button))]
 public class CommandAttack : Command
@@ -10,8 +11,10 @@ public class CommandAttack : Command
     public UnityAction dealDamage;
     [TextArea(1,2)]public string commandDescription;
     public PlayerBattleUI playerUI;
+    
     public float latenceAfterDamage;
     public float latenceAfterResolution;
+    public AudioClip attackSound;
     public override void Awake()
     {
         base.Awake();
@@ -49,9 +52,11 @@ public class CommandAttack : Command
 
     void DealDamage()
     {
-        TurnHandler.Instance.currentCommand = null;
-        playerUI.HideInfo();
+        AudioHandler.Instance.SpawnClip(attackSound, 0.4f, transform.position);
+        CommandDone();
+        DoUsedSound();
         StartCoroutine(DamageProcess());
+        
     }
 
     IEnumerator DamageProcess()

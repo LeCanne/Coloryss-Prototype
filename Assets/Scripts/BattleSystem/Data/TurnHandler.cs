@@ -33,7 +33,9 @@ public class TurnHandler : MonoBehaviour
     public Command currentCommand;
 
     public event Action playerTurnBegin;
+    public event Action commandExecuted;
     public event Action enemyTurnBegin;
+    
     int currentActiveEnemy = 0;
     private void Awake()
     {
@@ -85,6 +87,7 @@ public class TurnHandler : MonoBehaviour
         if (!Options.Contains(btn))
         {
             Options.Add(btn);
+            command.commandDone += CommandHasBeenDone;
         }
         else
         {
@@ -106,6 +109,12 @@ public class TurnHandler : MonoBehaviour
         {
             option.enabled = false;
         }
+    }
+
+    public void CommandHasBeenDone() 
+    {
+        commandExecuted.Invoke();
+        currentCommand = null;
     }
     #endregion
 
